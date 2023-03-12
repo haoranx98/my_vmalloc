@@ -25,19 +25,19 @@ int __init vmalloc_InitFunc(void){
 	if(app_8KB_memory == NULL){
 		printk("Can not apply memory!!!!\n");
 	}else{
-		printk("8KB address is 0x%1x\n", (unsigned long)app_8KB_memory);
+		printk("8KB address is 0x%lx\n", (unsigned long)app_8KB_memory);
 	}
 	app_1MB_memory = (char *)vmalloc(MEMORY_1MB);
 	if(app_1MB_memory == NULL){
 		printk("Can not apply memory!!!!\n");
 	}else{
-		printk("1MB address is 0x%1x\n", (unsigned long)app_1MB_memory);
+		printk("1MB address is 0x%lx\n", (unsigned long)app_1MB_memory);
 	}
 	app_64MB_memory = (char *)vmalloc(MEMORY_64MB);
 	if(app_64MB_memory == NULL){
 		printk("Can not apply memory!!!!\n");
 	}else{
-		printk("64MB address is 0x%1x\n", (unsigned long)app_64MB_memory);
+		printk("64MB address is 0x%lx\n", (unsigned long)app_64MB_memory);
 	}
 
 	return 0;
@@ -46,20 +46,20 @@ int __init vmalloc_InitFunc(void){
 void __exit vmalloc_ExitFunc(void){
 	if(app_8KB_memory != NULL){
 		vfree(app_8KB_memory);
-		printk("free the kernel memory of 8KB");
+		printk("free the kernel memory of 8KB\n");
 	}
 
 	if(app_1MB_memory != NULL){
 		vfree(app_1MB_memory);
-		printk("free the kernel memory of 1MB");
+		printk("free the kernel memory of 1MB\n");
 	}
 
 	if(app_64MB_memory != NULL){
 		vfree(app_64MB_memory);
-		printk("free the kernel memory of 64MB");
+		printk("free the kernel memory of 64MB\n");
 	}
 
-	printk("Exit kernel module!!!!");
+	printk("Exit kernel module!!!!\n");
 }
 
 module_init(vmalloc_InitFunc);
